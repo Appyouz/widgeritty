@@ -2,7 +2,6 @@
 activity = "1.13.0"
 agp = "9.3.1"
 compose-bom = "2026.09.00"
-junit-jupiter = "6.0.1"
 kotlin = "2.4.21"
 
 [libraries]
@@ -12,10 +11,7 @@ compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 compose-ui-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
-junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
-junit = { module = "junit:junit", version.ref = "junit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-android-junit5 = { id = "de.mannodermaus.android-junit5"}

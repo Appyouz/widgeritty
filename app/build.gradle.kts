@@ -40,7 +40,4 @@ dependencies {
 
     // Compose tooling (debug builds only)
     debugImplementation(libs.compose.ui.tooling)
-
-    // Unit testing
-    testImplementation(libs.junit)
 }
