@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+val appName = (rootProject.findProperty("app.name") as? String) ?: "DefaultApp"
+
 android {
     namespace = "com.example.widgeritty"
     compileSdk = 37
@@ -40,4 +42,14 @@ dependencies {
 
     // Compose tooling (debug builds only)
     debugImplementation(libs.compose.ui.tooling)
+}
+
+androidComponents {
+    onVariants { variant ->
+        variant.outputs.forEach { output ->
+            val safeAppName = appName.replace(Regex("[^A-Za-z0-9._-]"), "_")
+            val apkName = "${safeAppName}-${variant.buildType}-${output.versionName.get()}.apk"
+            (output as com.android.build.api.variant.impl.VariantOutputImpl).outputFileName.set(apkName)
+        }
+    }
 }
