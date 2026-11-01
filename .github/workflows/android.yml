@@ -28,11 +28,11 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build debug APK
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleDebug -Papp.name=Widgeritty
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: widgeritty-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/debug/Widgeritty-debug-1.0.apk
           if-no-files-found: error
