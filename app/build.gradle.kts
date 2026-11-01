@@ -7,7 +7,7 @@ val appName = (rootProject.findProperty("app.name") as? String) ?: "DefaultApp"
 
 android {
     namespace = "com.example.widgeritty"
-    compileSdk = 37.0
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.example.widgeritty"
