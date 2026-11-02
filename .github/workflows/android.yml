@@ -26,7 +26,6 @@ jobs:
 
       - name: Create Symlink for Android 37
         run: |
-          ln -s ${ANDROID_SDK_ROOT}/platforms/android-37.0 ${ANDROID_SDK_ROOT}/platforms/android-37
 
 
 
