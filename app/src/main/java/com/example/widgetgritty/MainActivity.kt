@@ -1,4 +1,4 @@
-package com.example.widgeritty
+package com.example.widgetgritty
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -16,14 +16,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             MaterialTheme {
                 Surface {
-                    Greeting()
+                    MainScreen()
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting() {
-    Text(text = "Hello World!")
-}
