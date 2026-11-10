@@ -13,40 +13,25 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.widgetgritty.AppScreen
 import com.example.widgetgritty.SettingScreen
-
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 
 @Composable
-fun HomeScreen(onAppsClick: () -> Unit) {
+fun HomeScreen(onAppsClick: () -> Unit, onSettingClick: () -> Unit) {
+    // val items = listOf("Apps", "Settings")
 
-    Box(modifier = Modifier.fillMaxWidth()) {
-        Column(
-            modifier = Modifier.fillMaxWidth()
-                .padding(all = 8.dp)
-                .verticalScroll(state = rememberScrollState())
-        ) {
-            Card(
-                onClick = { onAppsClick() },
-                modifier = Modifier.padding(all = 20.dp)
-                    .size(width = 200.dp, height = 200.dp),
-                shape = RoundedCornerShape(size = 5.dp)
-            ) {
-                Column(
-                    modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(text = "Apps")
-
-
-                }
-
-            }
-
-        }
-        // SettingScreen(name = "Settings")
-        // TODO: Figure out the button click for each bottomnavbar (HINT: onClick)
-
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        modifier = Modifier.fillMaxSize().padding(8.dp),
+        contentPadding = PaddingValues(8.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        item { TitleSection(name = "Home Screen") }
+        item { YourWidgetSection(name = "Your widgets") }
     }
+
 }
 
 

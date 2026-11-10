@@ -23,37 +23,5 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun SettingScreen(name: String) {
-    Box(modifier = Modifier.fillMaxSize()) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(all = 8.dp)
-                .verticalScroll(state = rememberScrollState())
-        ) {
-            Text(
-                text = name,
-                modifier = Modifier.fillMaxWidth()
-                    .padding(top = 20.dp),
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.bodyLarge
-            )
-            Card(
-                onClick = {},
-                modifier = Modifier.padding(all = 20.dp)
-                    .size(width = 200.dp, height = 200.dp),
-                shape = RoundedCornerShape(size = 5.dp)
-            ) {
-                Column(
-                    modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(text = "$name Column")
-
-                }
-
-            }
-        }
-
-    }
+    Text("Hello $name Screen")
 }
