@@ -19,6 +19,18 @@ jobs:
           distribution: temurin
           java-version: 17
 
+      # Free up disk space before installing the Android SDK
+      - name: Free Disk Space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo rm -rf /usr/local/lib/android/sdk/ndk
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo rm -rf /usr/local/lib/android/sdk/system-images
+          sudo docker system prune -af --volumes || true
+          df -h
+
       - name: Set up Android SDK
         uses: android-actions/setup-android@v4
         with:
@@ -26,15 +38,14 @@ jobs:
 
       - name: Create Symlink for Android 37
         run: |
-          ln -s ${ANDROID_SDK_ROOT}/platforms/android-37.0 ${ANDROID_SDK_ROOT}/platforms/android-37
-
-
+          ln -sfn "${ANDROID_SDK_ROOT}/platforms/android-37.0" "${ANDROID_SDK_ROOT}/platforms/android-37"
+          ls -la "${ANDROID_SDK_ROOT}/platforms/"
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build debug APK
-        run: ./gradlew assembleDebug -Papp.name=Widgeritty
+        run: ./gradlew assembleDebug -Papp.name=Widgeritty --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
